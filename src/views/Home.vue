@@ -12,10 +12,22 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-
-console.log(test);
+import axios from "axios";
 
 export default {
+  mounted: () => {
+    axios
+      .post("http://zhanggoodzhi.top/account/login", {
+        account: "Fred",
+        psd: "Flintstone"
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
   name: "home",
   components: {
     HelloWorld
